@@ -120,5 +120,7 @@ $("#done").on("click", function() {
             $("#correct").html("Correct " + correct);
         }
     }
-
+//I still need to put in a reset function, which displays the results if the timer runs out
+//I received help on this from my tutor and from a work colleague.  In an effort to understand and retain the information, I pseudocoded
+//what I had worked with and learned
 })
