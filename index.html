@@ -23,101 +23,22 @@ User is taken directly to results page, showing correct answers/incorrect answer
 User answers all questions in time alloted
 User clicks "Done" button at bottom of page
 User is presented with correct answers/incorrect answers/unanswered questions
-
-
  -->
 
 <body>
     <div id="main container" class="container-fluid">
-        <div id="opener">
-            <h1>Computer trivia game</h1>
-            <button id="start" type="button" class="btn btn-primary btn-lg">Start</button>
-            <p id="show-timer"></p>
-        </div>
-        <div id="quiz"></div>
-        <p>What year was the first Apple computer released?</p>
-        <form>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1970
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1973
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1976
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1981
-            </label>
-        </form>
-        <br>
-        <p>First person shooter video game, Doom, was first released in what year?</p>
-        <form>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1986
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1990
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1993
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">1995
-            </label>
-        </form>
-        <br>
-        <p>With over 17 million units produced, what was the highest selling model of personal computer ever?</p>
-        <form>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Apple Macintosh
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">IBM ThinkPad
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Big Beige Box
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Commodore 64
-            </label>
-        </form>
-        <br>
-        <p>1024 Gigabytes is equal to one what?</p>
-        <form>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Terabyte
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Megabyte
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Kilobyte
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Gigabyte
-            </label>
-        </form>
-        <br>
-        <p>In 1975 an engineer created the first electronc camera while working for what company?</p>
-        <form>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Panasonic
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Kodak
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Polaroid
-            </label>
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="optradio">Sony
-            </label>
-        </form>
-        <br>
-        <button id="start" type="button" class="btn btn-primary btn-lg">Done</button>
-        <div id="results"></div>
+        <h1>Computer Trivia Game</h1>
+        <button id="start" type="button" class="btn btn-primary btn-lg">Start</button>
+    </div>
+    <div id="quiz-main">
+        <p id="show-timer"></p>
+        <p id="quiz"></p>
+        <button id="done" type="button" class="btn btn-primary btn-lg">Done</button>
+    </div>
+    <div id="results">
+        <p id="incorrect"></p>
+        <p id="correct"></p>
+        <p id="unanswered"></p>
     </div>
     <script src="assets/javascript/app.js"></script>
 </body>
