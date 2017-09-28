@@ -3,8 +3,8 @@ $(document).ready(function() {
     var number = 60;
     var intervalId;
 
-    function pageLoad () {
-    	$("#quiz-main").hide();
+    function pageLoad() {
+        $("#quiz-main").hide();
     }
 
     pageLoad();
@@ -52,6 +52,7 @@ var choices = [
 var answers = ["1976", "1993", "Commodore 64", "Terabyte", "Kodak"]
 var userSelected = [];
 
+//variables for the user results, which will increment
 var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
@@ -62,65 +63,62 @@ for (var i = 0; i < questions.length; i++) {
 
     // loop over choices to show choices per question and use jQuery to append html and display answer choices
     // also add radio buttons to each answer choice by defining input type
+    //each specific quesiton with it's related answer choices are displayed (name/value pair,like inj an object)
+    //choices [i][j] after name/value will display the answer choices on the page
     for (var j = 0; j < choices[i].length; j++) {
         $("#quiz").append("<input type='radio' name='" + questions[i] + "' value='" + choices[i][j] + "'>" + choices[i][j] + "</input>");
     }
 
 }
 
-
+//click event for "Done" button
 $("#done").on("click", function() {
     // console.log('inside ------')
-    //declare variable, "radioButtons", which will hold all elements defined as input type=radio, via the document.querySelectorAll method
+    //declare variable, "radioButtons", which will extract all elements from the html defined as input type=radio, via the document.querySelectorAll method
+    //radioButton variable can hold all 20 radio buttons on the quiz
     var radioButtons = document.querySelectorAll("input[type=radio]");
     $("#quiz-main").hide();
-    //loop over questions and userSelected-------??
+    //for loop is initialize the answers, 
     for (var i = 0; i < questions.length; i++) {
-        userSelected[i] = "";
+        //push method populates user answers into empty array, pushes placeholders into empty array ("").
+        userSelected.push("");
     }
 
-    //loop over radio buttons
+    //loop over all 20 radio buttons
+    //declare variable called questionIndex, which uses indexOf method to check which quesiton the radio button belongs to (compare with name to search array)
     // console.log('radio 0000', radioButtons);
     for (var i = 0; i < radioButtons.length; i++) {
-        var questionIndex = Math.floor(i / 4);
+        //Math.floor(i / 4);
 
-        console.log(i + " " + Math.floor(i / 4) + " each button----", radioButtons[i].checked);
+        //checking which radio button the user selected
         if (radioButtons[i].checked === true) {
             console.log('checked radio!!!', radioButtons[i].value);
-            //push user answers into empty array
+
             //userSelected[questionIndex] = radioButtons[i].value;
             console.log('user selected!!', userSelected);
+            //declare variable questionIndex and equate to equate it to the radio button selected for that question
+            var questionIndex = questions.indexOf(radioButtons[i].name)
+            //replace placeholder value in the userSelected array with the user's choice (the radio button they clicked)
+            userSelected[questionIndex] = radioButtons[i].value;
         }
     }
 
 
     for (var j = 0; j < userSelected.length; j++) {
-        var a = answers.indexOf(userSelected[j]);
-        if (a === -1) {
+        // var a = answers.indexOf(userSelected[j]);
+        if (userSelected[j] === "") {
+            console.log("no answer");
+            unanswered = unanswered + 1
+            $("#unanswered").html("Unanswered " + unanswered);
+        } else if (userSelected[j] !== answers[j]) {
             console.log("incorrect answer");
             incorrect = incorrect + 1
             $("#incorrect").html("Incorrect " + incorrect);
-        } else if (a > -1) {
+        } else if (userSelected[j] === answers[j]) {
             console.log("correct answer");
             correct = correct + 1
             $("#correct").html("Correct " + correct);
         }
     }
 
-    var b = questions.length - incorrect - correct;
-    console.log("unanswered questions " + b);
-    $("#unanswered").html("Unanswered " + b);
-
 })
-
-
-
-
-// function that counts the time down and checks if the time has run out - will be similar to decrement function, but will have a conditional in it and will 
-// check if the time of the question is equal to 0 and if it is, clear the timeout as well as add one to unanswered question
-
-// function to check radio button value, if it is right key - checking value, tie key to value of radio buttons
-
-// function to show if time is up and display the correct answer
-
-// correct/incorrect/game over/reset functions
